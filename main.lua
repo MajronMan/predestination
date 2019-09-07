@@ -1,5 +1,6 @@
 local Room = require("actors.room")
 local Player = require("actors.player.Player")
+local Gui = require("gui.Gui")
 --- CR: I'd make 'map' a member of Map module,
 --- because require returning a variable is meh
 local map = require("state.map")
@@ -8,9 +9,12 @@ function love.load()
     local data = dofile("assets/data.lua")
 
     player = Player:load(data)
+
     room = map[1]
     font = love.graphics.newFont(25)
     love.graphics.setFont(font)
+
+    gui = Gui:new(font)
 
     data = nil
 end
@@ -55,6 +59,8 @@ function love.draw()
         love.graphics.print(exit.to, exit.x + exit.width / 4, exit.y + exit.width / 4)
     end
     love.graphics.setColor(1, 1, 1)
+
+    gui:draw(player.model)
 end
 
 function love.keypressed(key, scancode, isrepeat)
