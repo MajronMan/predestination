@@ -1,14 +1,19 @@
-Room = require("actors.room")
-Player = require("actors.player")
+local Room = require("actors.room")
+local Player = require("actors.player.Player")
 --- CR: I'd make 'map' a member of Map module,
 --- because require returning a variable is meh
-map = require("state.map")
+local map = require("state.map")
 
 function love.load()
-    player = Player:new()
+    local data = dofile("assets/data.lua")
+    image = love.graphics.newImage("assets/images/player.png")
+
+    player = Player:load(data)
     room = map[1]
     font = love.graphics.newFont(25)
     love.graphics.setFont(font)
+
+    data = nil
 end
 
 --- CR: Good as v1, but why not just check the exact bounds,
@@ -24,24 +29,13 @@ function checkCollision(a, b)
 end
 
 function love.update(dt)
-    if love.keyboard.isDown("d") and player.x < love.graphics.getWidth() - player.width then
-        player.x = player.x + (player.speed * dt)
-    end
-    if love.keyboard.isDown("a") and player.x > 0 then
-        player.x = player.x - (player.speed * dt)
-    end
-    if love.keyboard.isDown("w") and player.y > 0 then
-        player.y = player.y - (player.speed * dt)
-    end
-    if love.keyboard.isDown("s") and player.y < love.graphics.getHeight() - player.height then
-        player.y = player.y + (player.speed * dt)
-    end
+    player:update(dt)
 
     for i, exit in ipairs(room.exits) do
-        if checkCollision(player, exit) then
+        if checkCollision(player.model, exit) then
             room = map[exit.to]
-            player.x = (love.graphics.getWidth() - player.width) / 2
-            player.y = (love.graphics.getHeight() - player.height) / 2
+            player.model.x = (love.graphics.getWidth() - player.model.width) / 2
+            player.model.y = (love.graphics.getHeight() - player.model.height) / 2
         end
     end
 end
@@ -49,6 +43,8 @@ end
 --- CR: I'd extract 'drawPlayer' and 'drawDoors'
 --- Also, the colors in here are magic numbers.
 function love.draw()
+    player:draw()
+
     love.graphics.setColor(0, 0, 0)
     love.graphics.rectangle("fill", room.x, room.y, room.height, room.width)
 
@@ -60,7 +56,6 @@ function love.draw()
         love.graphics.print(exit.to, exit.x + exit.width / 4, exit.y + exit.width / 4)
     end
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(player.image, player.x, player.y, 0, player.xScale, player.yScale, 0, 32)
 end
 
 function love.keypressed(key, scancode, isrepeat)
