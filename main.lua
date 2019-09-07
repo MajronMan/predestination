@@ -55,3 +55,9 @@ function love.draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.draw(player.image, player.x, player.y, 0, player.xScale, player.yScale, 0, 32)
 end
+
+function love.keypressed(key, scancode, isrepeat)
+    if key == "escape" then
+        love.window.close()
+    end
+end
