@@ -39,6 +39,7 @@ function love.update(dt)
             room = map[exit.to]
             player.model.x = (love.graphics.getWidth() - player.model.width) / 2
             player.model.y = (love.graphics.getHeight() - player.model.height) / 2
+            player.model.hp = player.model.hp - 1
         end
     end
 end

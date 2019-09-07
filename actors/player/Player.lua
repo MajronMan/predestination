@@ -48,6 +48,11 @@ function Player:update(dt)
     if love.keyboard.isDown("s") and self.model.y < love.graphics.getHeight() - self.model.height then
         self.model.y = self.model.y + dx
     end
+
+    if self.model.hp == 0 then
+        love.window.showMessageBox("GAME OVER", "You died! Poor princess...", "info")
+        love.load()
+    end
 end
 
 function Player:draw()
