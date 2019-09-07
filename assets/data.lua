@@ -7,7 +7,10 @@ data.player = {
     rotation = 0,
     xOffset = 0,
     yOffset = 32,
-    speed = 400
+    speed = 400,
+    hp = 10,
+    mp = 10,
+    ip = 10
 }
 
 return data

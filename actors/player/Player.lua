@@ -14,7 +14,13 @@ function Player:load(data)
         (love.graphics.getHeight() - d.height) / 2,
         d.width,
         d.height,
-        d.speed
+        d.speed,
+        d.hp,
+        d.mp,
+        d.ip,
+        d.hp,
+        d.mp,
+        d.ip
     )
     local view =
         PlayerView:new(
