@@ -21,7 +21,7 @@ function Player.new()
             xScale = xScale,
             yScale = yScale
         },
-        Room
+        Player
     )
     return self
 end
