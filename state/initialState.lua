@@ -1,3 +1,0 @@
-local initialState = {}
-
-return initialState
