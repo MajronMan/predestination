@@ -6,7 +6,6 @@ local map = require("state.map")
 
 function love.load()
     local data = dofile("assets/data.lua")
-    image = love.graphics.newImage("assets/images/player.png")
 
     player = Player:load(data)
     room = map[1]
