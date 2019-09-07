@@ -1,5 +1,7 @@
 Room = require("actors.room")
 Player = require("actors.player")
+--- CR: I'd make 'map' a member of Map module,
+--- because require returning a variable is meh
 map = require("state.map")
 
 function love.load()
@@ -9,6 +11,9 @@ function love.load()
     love.graphics.setFont(font)
 end
 
+--- CR: Good as v1, but why not just check the exact bounds,
+--- which would work more predictably?
+--- Also, since this retuns boolean I'd name it as a question: 'isColliding'
 function checkCollision(a, b)
     local dx = math.abs(a.x - b.x)
     local dy = math.abs(a.y - b.y)
@@ -41,6 +46,8 @@ function love.update(dt)
     end
 end
 
+--- CR: I'd extract 'drawPlayer' and 'drawDoors'
+--- Also, the colors in here are magic numbers.
 function love.draw()
     love.graphics.setColor(0, 0, 0)
     love.graphics.rectangle("fill", room.x, room.y, room.height, room.width)

@@ -14,6 +14,9 @@ local Room = require("actors.room")
 --              \ /
 --               E
 
+--- CR: I'd make this list a dictionary to make room indices explicit.
+--- Modifying the map shape would be a major PITA without them.
+--- This already manifests in 3 comments regarding just the indices :d
 -- arrays start at 1 btw
 local exitsList = {
     {2, 3},
