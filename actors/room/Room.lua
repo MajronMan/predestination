@@ -1,6 +1,7 @@
 local RoomModel = require("actors.room.RoomModel")
 local RoomView = require("actors.room.RoomView")
 local isColliding = require("utils.collisions").isColliding
+local HpEvent = require("events.HpEvent")
 
 local Room = {}
 Room.__index = Room
@@ -10,7 +11,15 @@ function Room.new(model, view)
 end
 
 function Room.load(index, exits)
-    return Room.new(RoomModel.new(index, exits), RoomView.new())
+    local event = nil
+    if math.random() < 0.2 then
+        if math.random() > 0.5 then
+            event = HpEvent.new(-2)
+        else
+            event = HpEvent.new(2)
+        end
+    end
+    return Room.new(RoomModel.new(index, exits, event), RoomView.new())
 end
 
 function Room:getCollidingExitNo(box)
@@ -26,6 +35,12 @@ function Room:draw()
     self.view:draw()
     for _, exit in pairs(self.model.exits) do
         exit:draw()
+    end
+end
+
+function Room:enter(target)
+    if self.model.event then
+        self.model.event:trigger(target)
     end
 end
 

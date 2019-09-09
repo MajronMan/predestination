@@ -18,8 +18,9 @@ function love.update(dt)
 
     local exitNo = state:getRoom():getCollidingExitNo(state.player:getBoundingBox())
     if exitNo ~= nil then
-        state.player:nextRoom()
         state.currentRoomIndex = exitNo
+        state.player:nextRoom()
+        state:getRoom():enter(state.player.model)
     end
 end
 

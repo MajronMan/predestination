@@ -64,8 +64,6 @@ end
 function Player:nextRoom()
     local box = self.view:getBoundingBox()
     self.view:setPosition((love.graphics.getWidth() - box.width) / 2, (love.graphics.getHeight() - box.height) / 2)
-
-    self.model.hp = self.model.hp - 1
 end
 
 function Player:getBoundingBox()
