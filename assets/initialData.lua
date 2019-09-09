@@ -13,4 +13,8 @@ data.player = {
     ip = 10
 }
 
+data.fontSize = 25
+
+data.currentRoomIndex = 1
+
 return data
