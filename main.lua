@@ -2,14 +2,11 @@ local Player = require("actors.player.Player")
 local Gui = require("gui.Gui")
 local GameState = require("state.GameState")
 local map = require("assets.map")
+local data = require("assets.initialData")
 
 local nuklear = require("nuklear")
 
 function love.load()
-    -- CR. why dofile instead of require when it's .lua anyway?
-    -- BTW we should serialize state to some other place
-    -- assets is for static things
-    local data = dofile("assets/initialData.lua")
     font = love.graphics.newFont(data.fontSize)
     love.graphics.setFont(font)
     state = GameState:new(data)
@@ -19,8 +16,8 @@ end
 
 function love.update(dt)
     state.player:update(dt)
-
     local exitNo = state:getRoom():getCollidingExitNo(state.player:getBoundingBox())
+
     if exitNo ~= nil then
         state.currentRoomIndex = exitNo
         state.player:nextRoom()
@@ -31,6 +28,7 @@ end
 function love.draw()
     state:getRoom():draw()
     state.player:draw()
+    state.spellbook:draw()
 
     Gui.draw(state.player:getStats())
     ui:draw()
@@ -65,4 +63,11 @@ end
 
 function love.wheelmoved(x, y)
     ui:wheelmoved(x, y)
+end
+
+function love.mousepressed(x, y, button, istouch, presses)
+    local spell = state.spellbook:getUsedSpell(x, y)
+    if spell ~= nil then
+        spell:cast(state.player)
+    end
 end
