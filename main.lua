@@ -70,4 +70,5 @@ function love.mousepressed(x, y, button, istouch, presses)
     if spell ~= nil then
         spell:cast(state.player)
     end
+    ui:mousepressed(x, y, button, istouch, presses)
 end
