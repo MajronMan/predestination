@@ -1,15 +1,15 @@
+local nuklear = require("nuklear")
+
 local Player = require("actors.player.Player")
 local Gui = require("gui.Gui")
 local GameState = require("state.GameState")
 local map = require("assets.map")
 local data = require("assets.initialData")
 
-local nuklear = require("nuklear")
-
 function love.load()
     font = love.graphics.newFont(data.fontSize)
     love.graphics.setFont(font)
-    state = GameState:new(data)
+    state = GameState(data)
     love.keyboard.setKeyRepeat(true)
     ui = nuklear.newUI()
 end

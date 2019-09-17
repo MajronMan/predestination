@@ -33,7 +33,7 @@ local exitsList = {
 local map = {}
 
 for i, exits in ipairs(exitsList) do
-    map[i] = Room.load(i, exits)
+    map[i] = Room:load(i, exits)
 end
 
 --- CR. I'd make 'map' a member of Map module,

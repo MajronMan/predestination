@@ -1,19 +1,16 @@
-local PlayerModel = {}
-PlayerModel.__index = PlayerModel
+local Class = require("hump.class")
 
-function PlayerModel.new(speed, hp, mp, ip, maxHp, maxMp, maxIp)
-    return setmetatable(
-        {
-            speed = speed,
-            hp = hp,
-            mp = mp,
-            ip = ip,
-            maxHp = maxHp,
-            maxMp = maxMp,
-            maxIp = maxIp
-        },
-        self
-    )
-end
+local PlayerModel =
+    Class {
+    init = function(self, speed, hp, mp, ip, maxHp, maxMp, maxIp)
+        self.speed = speed
+        self.hp = hp
+        self.mp = mp
+        self.ip = ip
+        self.maxHp = maxHp
+        self.maxMp = maxMp
+        self.maxIp = maxIp
+    end
+}
 
 return PlayerModel
