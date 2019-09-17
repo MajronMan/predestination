@@ -1,7 +1,7 @@
 local Class = require("hump.class")
 
-local RoomModel = require("actors.room.RoomModel")
-local RoomView = require("actors.room.RoomView")
+local RoomModel = require("entities.room.RoomModel")
+local RoomView = require("entities.room.RoomView")
 local isColliding = require("utils.collisions").isColliding
 local HpEvent = require("events.HpEvent")
 

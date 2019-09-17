@@ -1,7 +1,7 @@
 local Class = require("hump.class")
 
-local SpellModel = require("actors.spell.SpellModel")
-local SpellView = require("actors.spell.SpellView")
+local SpellModel = require("entities.spell.SpellModel")
+local SpellView = require("entities.spell.SpellView")
 
 local Spell =
     Class {

@@ -1,7 +1,7 @@
 local Class = require("hump.class")
 
-local PlayerModel = require("actors.player.PlayerModel")
-local PlayerView = require("actors.player.PlayerView")
+local PlayerModel = require("entities.player.PlayerModel")
+local PlayerView = require("entities.player.PlayerView")
 
 local Player =
     Class {

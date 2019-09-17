@@ -1,6 +1,6 @@
 local Class = require("hump.class")
 
-local Exit = require("actors.room.Exit")
+local Exit = require("entities.room.Exit")
 
 local RoomModel =
     Class {

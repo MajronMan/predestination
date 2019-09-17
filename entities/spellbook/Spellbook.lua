@@ -1,7 +1,7 @@
 local Class = require("hump.class")
 
-local SpellbookView = require("actors.spellbook.SpellbookView")
-local Spell = require("actors.spell.Spell")
+local SpellbookView = require("entities.spellbook.SpellbookView")
+local Spell = require("entities.spell.Spell")
 local isColliding = require("utils.collisions").isColliding
 
 local Spellbook =

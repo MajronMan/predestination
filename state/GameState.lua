@@ -1,8 +1,8 @@
 local Class = require("hump.class")
 
 local map = require("assets.map")
-local Player = require("actors.player.Player")
-local Spellbook = require("actors.spellbook.Spellbook")
+local Player = require("entities.player.Player")
+local Spellbook = require("entities.spellbook.Spellbook")
 
 local GameState =
     Class {

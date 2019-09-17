@@ -1,4 +1,4 @@
-local Room = require("actors.room.Room")
+local Room = require("entities.room.Room")
 
 --               1
 --              / \

@@ -1,6 +1,6 @@
 local nuklear = require("nuklear")
 
-local Player = require("actors.player.Player")
+local Player = require("entities.player.Player")
 local Gui = require("gui.Gui")
 local GameState = require("state.GameState")
 local map = require("assets.map")
