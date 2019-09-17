@@ -6,10 +6,10 @@ local Spellbook = require("entities.spellbook.Spellbook")
 
 local GameState =
     Class {
-    init = function(self, data)
-        self.player = Player:load(data.player)
+    init = function(self, data, playerModel, spellbookModel)
+        self.player = playerModel
         self.currentRoomIndex = data.currentRoomIndex
-        self.spellbook = Spellbook:load(data.spells)
+        self.spellbook = spellbookModel
     end,
     getRoom = function(self)
         return map[self.currentRoomIndex]

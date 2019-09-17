@@ -1,36 +1,40 @@
 local nuklear = require("nuklear")
 
 local Player = require("entities.player.Player")
+local Spellbook = require("entities.spellbook.Spellbook")
 local Gui = require("gui.Gui")
 local GameState = require("state.GameState")
 local map = require("assets.map")
 local data = require("assets.initialData")
+local binser = require("binser")
 
 function love.load()
     font = love.graphics.newFont(data.fontSize)
     love.graphics.setFont(font)
-    state = GameState(data)
+    player = Player:load(data.player)
+    spellbook = Spellbook:load(data.spells)
+    state = GameState(data, player.model, spellbook.model)
     love.keyboard.setKeyRepeat(true)
     ui = nuklear.newUI()
 end
 
 function love.update(dt)
-    state.player:update(dt)
-    local exitNo = state:getRoom():getCollidingExitNo(state.player:getBoundingBox())
+    player:update(dt)
+    local exitNo = state:getRoom():getCollidingExitNo(player:getBoundingBox())
 
     if exitNo ~= nil then
         state.currentRoomIndex = exitNo
-        state.player:nextRoom()
-        state:getRoom():enter(state.player.model)
+        player:nextRoom()
+        state:getRoom():enter(player.model)
     end
 end
 
 function love.draw()
     state:getRoom():draw()
-    state.player:draw()
-    state.spellbook:draw()
+    player:draw()
+    spellbook:draw()
 
-    Gui.draw(state.player:getStats())
+    Gui.draw(player:getStats())
     ui:draw()
 end
 
@@ -66,9 +70,9 @@ function love.wheelmoved(x, y)
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
-    local spell = state.spellbook:getUsedSpell(x, y)
+    local spell = spellbook:getUsedSpell(x, y)
     if spell ~= nil then
-        spell:cast(state.player)
+        spell:cast(player)
     end
     ui:mousepressed(x, y, button, istouch, presses)
 end
