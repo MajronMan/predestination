@@ -7,7 +7,6 @@ local SpellbookView =
     end,
     draw = function(self)
         for k, spell in pairs(self.spells) do
-            print(k)
             spell.view:draw()
         end
     end
