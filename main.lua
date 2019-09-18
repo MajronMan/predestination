@@ -1,3 +1,5 @@
+require("custom_conf")
+
 local nuklear = require("nuklear")
 
 local Player = require("entities.player.Player")

@@ -47,7 +47,3 @@ function love.conf(t)
     t.modules.video = true -- Enable the video module (boolean)
     t.modules.window = true -- Enable the window module (boolean)
 end
-
--- set library search dir to `lib`, instead of the project root
-package.path = string.gsub(package.path, "?", "lib/?", 1)
-package.cpath = string.gsub(package.cpath, "?", "lib/?", 1)
