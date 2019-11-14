@@ -51,24 +51,8 @@ function love.keyreleased(key, scancode)
     ui:keyreleased(key, scancode)
 end
 
-function love.mousepressed(x, y, button, istouch, presses)
-    ui:mousepressed(x, y, button, istouch, presses)
-end
-
-function love.mousereleased(x, y, button, istouch, presses)
-    ui:mousereleased(x, y, button, istouch, presses)
-end
-
 function love.mousemoved(x, y, dx, dy, istouch)
     ui:mousemoved(x, y, dx, dy, istouch)
-end
-
-function love.textinput(text)
-    ui:textinput(text)
-end
-
-function love.wheelmoved(x, y)
-    ui:wheelmoved(x, y)
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
@@ -77,4 +61,16 @@ function love.mousepressed(x, y, button, istouch, presses)
         spell:cast(player)
     end
     ui:mousepressed(x, y, button, istouch, presses)
+end
+
+function love.mousereleased(x, y, button, istouch, presses)
+    ui:mousereleased(x, y, button, istouch, presses)
+end
+
+function love.textinput(text)
+    ui:textinput(text)
+end
+
+function love.wheelmoved(x, y)
+    ui:wheelmoved(x, y)
 end
