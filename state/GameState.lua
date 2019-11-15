@@ -1,19 +1,19 @@
-local Class = require("hump.class")
+local class = require("middleclass")
 
 local map = require("assets.map")
-local Player = require("entities.player.Player")
-local Spellbook = require("entities.spellbook.Spellbook")
+-- local PlayerController = require("entities.player.PlayerController")
+-- local SpellbookController = require("entities.spellbook.SpellbookController")
 
-local GameState =
-    Class {
-    init = function(self, data, playerModel, spellbookModel)
-        self.player = playerModel
-        self.currentRoomIndex = data.currentRoomIndex
-        self.spellbook = spellbookModel
-    end,
-    getRoom = function(self)
-        return map[self.currentRoomIndex]
-    end
-}
+local GameState = class("state.GameState")
+
+function GameState:initialize(data, playerModel, spellbookModel)
+    self.player = playerModel
+    self.currentRoomIndex = data.currentRoomIndex
+    self.spellbook = spellbookModel
+end
+
+function GameState:getRoom()
+    return map[self.currentRoomIndex]
+end
 
 return GameState
