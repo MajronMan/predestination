@@ -1,5 +1,6 @@
 local class = require("middleclass")
 
+local Gui = require("gui.Gui")
 local PlayerModel = require("entities.player.PlayerModel")
 local PlayerView = require("entities.player.PlayerView")
 local SpellView = require("entities.spell.SpellView")
@@ -30,13 +31,21 @@ function PlayerController:load(playerData)
     return PlayerController(model, view)
 end
 
-function PlayerController:update(dt)
+function PlayerController:update(state, dt)
     local dl = self.model.speed * dt
     self.view:updatePosition(self:handleKeyboard(dl))
 
     if self.model.hp == 0 then
         love.window.showMessageBox("GAME OVER", "You died! Poor princess...", "info")
         love.load()
+    end
+
+    local exitNo = state:getRoom():getCollidingExitNo(self:getBoundingBox())
+
+    if exitNo ~= nil then
+        state.currentRoomIndex = exitNo
+        player:nextRoom()
+        state:getRoom():enter(player.model)
     end
 end
 
@@ -62,6 +71,7 @@ end
 
 function PlayerController:draw()
     self.view:draw()
+    Gui.draw(player:getStats())
 end
 
 function PlayerController:nextRoom()
