@@ -18,7 +18,14 @@ function love.load()
 end
 
 function love.update(dt)
-    ctx:update(state, dt)
+    ui:frameBegin()
+    local width, height = love.graphics.getDimensions()
+    ui:windowBegin("MainWindow", width / 2, 0, width / 2, height / 7)
+    ui:layoutRow("dynamic", height / 8, 2)
+    ctx:update(ui, state, dt)
+
+    ui:windowEnd()
+    ui:frameEnd()
 end
 
 function love.draw()
@@ -43,7 +50,6 @@ function love.mousemoved(x, y, dx, dy, istouch)
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
-    ctx:mousepressed(x, y, button, istouch, presses)
     ui:mousepressed(x, y, button, istouch, presses)
 end
 

@@ -5,17 +5,23 @@ local SpellView = require("entities.spell.SpellView")
 
 local SpellController = class("entites.spell.SpellController")
 
-function SpellController:load(spellData)
+function SpellController:initialize(ctx, model, view)
+    self.model = model
+    self.view = view
+end
+
+function SpellController:load(ctx, i, spellData)
     local sd = spellData
     local icon = love.graphics.newImage(sd.image)
     local model = SpellModel(sd.mp, sd.name, sd.effect)
-    local view = SpellView(sd.x, sd.y, sd.width, sd.height, icon, sd.rotation, sd.xOffset, sd.yOffset)
-    return SpellController(model, view)
+    local view = SpellView(i, icon)
+    return SpellController(ctx, model, view)
 end
 
-function SpellController:initialize(model, view)
-    self.model = model
-    self.view = view
+function SpellController:update(ui, state, dt)
+    if (self.view:update(ui, state, dt)) then
+        self:cast(ctx.player.model)
+    end
 end
 
 function SpellController:cast(target)

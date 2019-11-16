@@ -12,17 +12,13 @@ function ContextController.static:load(data)
     return ctx
 end
 
-function ContextController:update(state, dt)
+function ContextController:update(ui, state, dt)
     self.player:update(state, dt)
+    self.spellbook:update(ui, state, dt)
 end
 
 function ContextController:draw()
     self.player:draw()
-    self.spellbook:draw()
-end
-
-function ContextController:mousepressed(x, y, button, istouch, presses)
-    self.spellbook:mousepressed(x, y, button, istouch, presses)
 end
 
 return ContextController

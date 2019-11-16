@@ -1,27 +1,14 @@
 local class = require("middleclass")
 
-local ImageRenderer = require("rendering.ImageRenderer")
-
 local SpellView = class("entities.spell.SpellView")
 
-function SpellView:initialize(x, y, width, height, image, rotation, xOffset, yOffset)
-    self.renderer =
-        ImageRenderer(image, x, y, rotation, width / image:getWidth(), height / image:getHeight(), xOffset, yOffset)
-    self.width = width
-    self.height = height
+function SpellView:initialize(i, image)
+    self.i = i
+    self.image = image
 end
 
-function SpellView:draw()
-    self.renderer:draw()
-end
-
-function SpellView:getBoundingBox()
-    return {
-        x = self.renderer.x,
-        y = self.renderer.y,
-        width = self.width,
-        height = self.height
-    }
+function SpellView:update(ui, state, dt)
+    return ui:button("entities.spell.SpellView[" .. self.i .. "]", self.image)
 end
 
 return SpellView
