@@ -6,25 +6,25 @@ local isColliding = require("utils.collisions").isColliding
 
 local SpellbookController = class("entities.spellbook.SpellbookController")
 
-function SpellbookController:load(spellbookData, player)
+function SpellbookController:initialize(ctx, spells, view)
+    self.ctx = ctx
+    self.spells = spells
+    self.view = view
+end
+
+function SpellbookController.static:load(ctx, spellbookData)
     local spells = {}
     for k, spell in pairs(spellbookData) do
         table.insert(spells, SpellController:load(spell))
     end
-    return SpellbookController(spells, SpellbookView(spells), player)
+    return SpellbookController(ctx, spells, SpellbookView(spells))
 end
 
 function SpellbookController:mousepressed(x, y, button, istouch, presses)
-    local spell = spellbook:getUsedSpell(x, y)
+    local spell = self:getUsedSpell(x, y)
     if spell ~= nil then
-        spell:cast(player)
+        spell:cast(ctx.player)
     end
-end
-
-function SpellbookController:initialize(spells, view, player)
-    self.spells = spells
-    self.view = view
-    self.player = player
 end
 
 function SpellbookController:draw()

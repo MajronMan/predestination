@@ -2,8 +2,7 @@ require("custom_conf")
 
 local nuklear = require("nuklear")
 
-local PlayerController = require("entities.player.PlayerController")
-local SpellbookController = require("entities.spellbook.SpellbookController")
+local ContextController = require("entities.ContextController")
 local GameState = require("state.GameState")
 local map = require("assets.map")
 local data = require("assets.initialData")
@@ -12,22 +11,19 @@ local binser = require("binser")
 function love.load()
     font = love.graphics.newFont(data.fontSize)
     love.graphics.setFont(font)
-    player = PlayerController:load(data.player)
-    spellbook = SpellbookController:load(data.spells, player)
-    state = GameState(data, player.model, spellbook.model)
+    ctx = ContextController:load(data)
+    state = GameState(data, ctx.player.model, ctx.spellbook.model)
     love.keyboard.setKeyRepeat(true)
     ui = nuklear.newUI()
 end
 
 function love.update(dt)
-    player:update(state, dt)
+    ctx:update(state, dt)
 end
 
 function love.draw()
     state:getRoom():draw()
-    player:draw()
-    spellbook:draw()
-
+    ctx:draw()
     ui:draw()
 end
 
@@ -47,7 +43,7 @@ function love.mousemoved(x, y, dx, dy, istouch)
 end
 
 function love.mousepressed(x, y, button, istouch, presses)
-    spellbook:mousepressed(x, y, button, istouch, presses)
+    ctx:mousepressed(x, y, button, istouch, presses)
     ui:mousepressed(x, y, button, istouch, presses)
 end
 

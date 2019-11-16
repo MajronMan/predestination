@@ -12,7 +12,7 @@ function PlayerController:initialize(model, view)
     self.view = view
 end
 
-function PlayerController:load(playerData)
+function PlayerController.static:load(ctx, playerData)
     local d = playerData
     local image = love.graphics.newImage(d.image)
 
@@ -44,8 +44,8 @@ function PlayerController:update(state, dt)
 
     if exitNo ~= nil then
         state.currentRoomIndex = exitNo
-        player:nextRoom()
-        state:getRoom():enter(player.model)
+        self:nextRoom()
+        state:getRoom():enter(self.model)
     end
 end
 
@@ -71,7 +71,7 @@ end
 
 function PlayerController:draw()
     self.view:draw()
-    Gui.draw(player:getStats())
+    Gui.draw(self:getStats())
 end
 
 function PlayerController:nextRoom()
