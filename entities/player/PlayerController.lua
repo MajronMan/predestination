@@ -1,6 +1,5 @@
 local class = require("middleclass")
 
-local Gui = require("gui.Gui")
 local PlayerModel = require("entities.player.PlayerModel")
 local PlayerView = require("entities.player.PlayerView")
 local SpellView = require("entities.spell.SpellView")
@@ -71,7 +70,6 @@ end
 
 function PlayerController:draw()
     self.view:draw()
-    Gui.draw(self:getStats())
 end
 
 function PlayerController:nextRoom()
