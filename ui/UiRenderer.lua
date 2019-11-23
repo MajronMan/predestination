@@ -2,11 +2,16 @@ local class = require("middleclass")
 
 local UiRenderer = class("ui.UiRenderer")
 
-function UiRenderer:initialize(ctx)
+function UiRenderer:initialize(data, ctx)
+    self.data = data
     self.ctx = ctx
+
+    self.font = love.graphics.newFont(self.data.fontSize)
 end
 
 function UiRenderer:frame(ui)
+    ui:styleSetFont(self.font)
+
     if ui:windowBegin("Stats", 0, 0, 220, 110) then
         ui:layoutRow("dynamic", 30, 2)
         ui:label("HP:", "left", "#ff4444")

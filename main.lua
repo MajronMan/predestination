@@ -7,11 +7,9 @@ local ContextController = require("entities.ContextController")
 local data = require("assets.initialData")
 
 function love.load()
-    font = love.graphics.newFont(data.fontSize)
-    love.graphics.setFont(font)
     ctx = ContextController:load(data)
     ui = nuklear.newUI()
-    uiRenderer = UiRenderer(ctx)
+    uiRenderer = UiRenderer(data, ctx)
 end
 
 function love.update(dt)
