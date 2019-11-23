@@ -57,6 +57,19 @@ data.currentRoomIndex = 1
 
 data.spellbook = spellbook
 
+--               1
+--              / \
+--             2   3
+--              \ / \
+--               4 - 5
+--              /   / \
+--             6   7 - 8
+--            / \ / \ /
+--           9   A - B
+--            \ /   /
+--             C   D
+--              \ /
+--               E
 data.map = {
     layout = {
         [1] = {2, 3},
