@@ -11,8 +11,8 @@ function PlayerController:initialize(model, view)
     self.view = view
 end
 
-function PlayerController.static:load(ctx, playerData)
-    local d = playerData
+function PlayerController.static:load(ctx, data)
+    local d = data
     local image = love.graphics.newImage(d.image)
 
     local model = PlayerModel(d.speed, d.hp, d.mp, d.ip, d.hp, d.mp, d.ip)

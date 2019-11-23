@@ -10,8 +10,8 @@ function SpellController:initialize(ctx, model, view)
     self.view = view
 end
 
-function SpellController:load(ctx, i, spellData)
-    local sd = spellData
+function SpellController:load(ctx, i, data)
+    local sd = data
     local icon = love.graphics.newImage(sd.image)
     local model = SpellModel(sd.mp, sd.name, sd.effect)
     local view = SpellView(i, icon)

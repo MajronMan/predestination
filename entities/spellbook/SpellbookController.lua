@@ -10,9 +10,9 @@ function SpellbookController:initialize(ctx, spells)
     self.spells = spells
 end
 
-function SpellbookController.static:load(ctx, spellbookData)
+function SpellbookController.static:load(ctx, data)
     local spells = {}
-    for i, spell in ipairs(spellbookData) do
+    for i, spell in ipairs(data) do
         table.insert(spells, SpellController:load(ctx, i, spell))
     end
     return SpellbookController(ctx, spells)
