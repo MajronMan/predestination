@@ -1,14 +1,16 @@
 local class = require("middleclass")
 
+local MapModel = require("entities.map.MapModel")
+
 local MapController = class("entities.MapController")
 
-function MapController:initialize(layout, currentRoom)
-    self.layout = layout
-    self.currentRoom = currentRoom
+function MapController:initialize(model)
+    self.model = model
 end
 
 function MapController:load(ctx, data)
-    return MapController(data.layout, data.currentRoom)
+    local model = MapModel(data.layout, data.currentRoom)
+    return MapController(model)
 end
 
 return MapController
