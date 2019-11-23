@@ -1,7 +1,6 @@
 local class = require("middleclass")
 
 local SpellController = require("entities.spell.SpellController")
-local isColliding = require("utils.collisions").isColliding
 
 local SpellbookController = class("entities.spellbook.SpellbookController")
 
