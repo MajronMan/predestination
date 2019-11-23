@@ -1,9 +1,9 @@
 local data = {}
 
-local spells = {}
+local spellbook = {}
 
 table.insert(
-    spells,
+    spellbook,
     {
         width = 32,
         height = 32,
@@ -21,7 +21,7 @@ table.insert(
 )
 
 table.insert(
-    spells,
+    spellbook,
     {
         x = 50,
         y = 50,
@@ -55,6 +55,6 @@ data.fontSize = 25
 
 data.currentRoomIndex = 1
 
-data.spells = spells
+data.spellbook = spellbook
 
 return data

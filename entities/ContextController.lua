@@ -8,7 +8,7 @@ local ContextController = class("entities.ContextController")
 function ContextController.static:load(data)
     local ctx = ContextController()
     ctx.player = PlayerController:load(ctx, data.player)
-    ctx.spellbook = SpellbookController:load(ctx, data.spells)
+    ctx.spellbook = SpellbookController:load(ctx, data.spellbook)
     return ctx
 end
 
