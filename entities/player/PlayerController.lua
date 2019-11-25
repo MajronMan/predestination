@@ -2,7 +2,6 @@ local class = require("middleclass")
 
 local PlayerModel = require("entities.player.PlayerModel")
 local PlayerView = require("entities.player.PlayerView")
-local SpellView = require("entities.spell.SpellView")
 
 local PlayerController = class("entities.player.PlayerController")
 

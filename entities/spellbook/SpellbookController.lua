@@ -11,8 +11,8 @@ end
 
 function SpellbookController.static:load(ctx, data)
     local spells = {}
-    for i, spell in ipairs(data) do
-        table.insert(spells, SpellController:load(ctx, i, spell))
+    for _, spell in ipairs(data) do
+        table.insert(spells, SpellController:load(ctx, spell))
     end
     return SpellbookController(ctx, spells)
 end

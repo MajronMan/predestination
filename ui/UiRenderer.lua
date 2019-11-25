@@ -40,11 +40,12 @@ function UiRenderer:frame(ui)
 
     if ui:windowBegin("Context Menu", 200, 840, 1400, 225, "title") then
         ui:layoutRow("dynamic", 172, 6)
-        for _, spell in pairs(self.ctx.spellbook.spells) do
-            if ui:button(spell.model.name) then
-                spell:cast(self.ctx.player.model)
-            end
-        end
+        self.ctx.spellbook:update(ui, nil, nil)
+    -- for _, spell in pairs(self.ctx.spellbook.spells) do
+    --     if ui:button(spell.model.name) then
+    --         spell:cast(self.ctx.player.model)
+    --     end
+    -- end
     end
     ui:windowEnd()
 end
