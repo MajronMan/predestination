@@ -1,7 +1,7 @@
 require("custom_conf")
 
 local nuklear = require("nuklear")
-local UiRenderer = require("ui.UiRenderer")
+local YoungMeUi = require("ui.young_me.YoungMeUi")
 
 local ContextController = require("entities.ContextController")
 local data = require("assets.initialData")
@@ -9,12 +9,12 @@ local data = require("assets.initialData")
 function love.load()
     ctx = ContextController:load(data)
     ui = nuklear.newUI()
-    uiRenderer = UiRenderer(data, ctx)
+    ymUi = YoungMeUi(data, ctx)
 end
 
 function love.update(dt)
     ui:frameBegin()
-    uiRenderer:frame(ui)
+    ymUi:frame(ui)
     ui:frameEnd()
 end
 

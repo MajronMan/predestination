@@ -1,15 +1,15 @@
 local class = require("middleclass")
 
-local UiRenderer = class("ui.UiRenderer")
+local YoungMeUi = class("ui.young_me.YoungMeUi")
 
-function UiRenderer:initialize(data, ctx)
+function YoungMeUi:initialize(data, ctx)
     self.data = data
     self.ctx = ctx
 
     self.font = love.graphics.newFont(self.data.fontSize)
 end
 
-function UiRenderer:frame(ui)
+function YoungMeUi:frame(ui)
     ui:styleSetFont(self.font)
 
     if ui:windowBegin("Stats", 0, 0, 220, 110) then
@@ -50,4 +50,4 @@ function UiRenderer:frame(ui)
     ui:windowEnd()
 end
 
-return UiRenderer
+return YoungMeUi
