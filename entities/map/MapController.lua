@@ -1,6 +1,7 @@
 local class = require("middleclass")
 
 local MapModel = require("entities.map.MapModel")
+local RoomController = require("entities.room.RoomController")
 
 local MapController = class("entities.MapController")
 
@@ -9,8 +10,11 @@ function MapController:initialize(model)
 end
 
 function MapController:load(ctx, data)
-    local model = MapModel(data.layout, data.currentRoom)
-    return MapController(model)
+    local layout = {}
+    for i, room in ipairs(data.layout) do
+        table.insert(layout, i, RoomController:load(ctx, room, i))
+    end
+    return MapController(MapModel(layout, data.currentRoom))
 end
 
 return MapController

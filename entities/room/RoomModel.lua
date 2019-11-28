@@ -4,13 +4,9 @@ local Exit = require("entities.room.Exit")
 
 local RoomModel = class("entities.room.RoomModel")
 
-function RoomModel:initialize(index, exits, event)
-    local drawableExits = {}
-    for i, to in ipairs(exits) do
-        drawableExits[i] = Exit(to, 200 * i, 0, 100, 100, {1 - to / 20, to / 20, 1, 1})
-    end
-    self.index = index
-    self.exits = drawableExits
+function RoomModel:initialize(id, exits, event)
+    self.id = id
+    self.exits = exits
     self.event = event
 end
 
