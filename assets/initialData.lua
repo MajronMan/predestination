@@ -1,28 +1,43 @@
 local data = {}
 
-local spellbook = {}
-
-table.insert(
-    spellbook,
+local spellbook = {
     {
-        mp = 10,
-        name = "Heal",
+        name = "HP +10",
         effect = function(target)
             target.hp = target.hp + 10
         end
-    }
-)
-
-table.insert(
-    spellbook,
+    },
     {
-        mp = 0,
-        name = "Restore Mana",
+        name = "HP -10",
+        effect = function(target)
+            target.hp = target.hp - 10
+        end
+    },
+    {
+        name = "MP +10",
         effect = function(target)
             target.mp = target.mp + 10
         end
+    },
+    {
+        name = "MP -10",
+        effect = function(target)
+            target.mp = target.mp - 10
+        end
+    },
+    {
+        name = "IP +10",
+        effect = function(target)
+            target.ip = target.ip + 10
+        end
+    },
+    {
+        name = "IP -10",
+        effect = function(target)
+            target.ip = target.ip - 10
+        end
     }
-)
+}
 
 data.player = {
     hp = 10,

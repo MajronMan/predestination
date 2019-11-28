@@ -12,7 +12,7 @@ end
 
 function SpellController:load(ctx, data)
     local sd = data
-    local model = SpellModel(sd.mp, sd.name, sd.effect)
+    local model = SpellModel(sd.name, sd.effect)
     local view = SpellView(model.name)
     return SpellController(ctx, model, view)
 end
