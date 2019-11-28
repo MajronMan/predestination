@@ -47,8 +47,6 @@ data.player = {
 
 data.fontSize = 25
 
-data.currentRoomIndex = 1
-
 data.spellbook = spellbook
 
 --               1
