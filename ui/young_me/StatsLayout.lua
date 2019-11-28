@@ -1,12 +1,12 @@
 local class = require("middleclass")
 
-local StatsWidget = class("ui.young_me.StatsWidget")
+local StatsLayout = class("ui.young_me.StatsLayout")
 
-function StatsWidget:initialize(model)
+function StatsLayout:initialize(model)
     self.model = model
 end
 
-function StatsWidget:frame(ui)
+function StatsLayout:frame(ui)
     if ui:windowBegin("Stats", 0, 0, 220, 110) then
         ui:layoutRow("dynamic", 30, 2)
         ui:label("HP:", "left", "#ff4444")
@@ -19,4 +19,4 @@ function StatsWidget:frame(ui)
     ui:windowEnd()
 end
 
-return StatsWidget
+return StatsLayout

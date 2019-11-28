@@ -1,9 +1,9 @@
 local class = require("middleclass")
 
-local RoomWidget = require("ui.young_me.RoomWidget")
-local SideMenuWidget = require("ui.young_me.SideMenuWidget")
-local SpellbookWidget = require("ui.young_me.SpellbookWidget")
-local StatsWidget = require("ui.young_me.StatsWidget")
+local RoomLayout = require("ui.young_me.RoomLayout")
+local SideMenuLayout = require("ui.young_me.SideMenuLayout")
+local SpellbookLayout = require("ui.young_me.SpellbookLayout")
+local StatsLayout = require("ui.young_me.StatsLayout")
 
 local YoungMeUi = class("ui.young_me.YoungMeUi")
 
@@ -12,18 +12,18 @@ function YoungMeUi:initialize(data, ctx)
     self.ctx = ctx
 
     self.font = love.graphics.newFont(self.data.fontSize)
-    self.widgets = {
-        RoomWidget(),
-        SideMenuWidget(),
-        SpellbookWidget(ctx.spellbook),
-        StatsWidget(ctx.player.model)
+    self.layouts = {
+        RoomLayout(),
+        SideMenuLayout(),
+        SpellbookLayout(ctx.spellbook),
+        StatsLayout(ctx.player.model)
     }
 end
 
 function YoungMeUi:frame(ui)
     ui:styleSetFont(self.font)
 
-    for _, w in pairs(self.widgets) do
+    for _, w in pairs(self.layouts) do
         w:frame(ui)
     end
 end

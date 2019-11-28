@@ -1,8 +1,8 @@
 local class = require("middleclass")
 
-local SideMenuWidget = class("ui.young_me.SideMenuWidget")
+local SideMenuLayout = class("ui.young_me.SideMenuLayout")
 
-function SideMenuWidget:frame(ui)
+function SideMenuLayout:frame(ui)
     if ui:windowBegin("SideMenu", 1700, 0, 220, 1080) then
         ui:layoutRow("dynamic", 175, 1)
         ui:button("Minimap")
@@ -15,4 +15,4 @@ function SideMenuWidget:frame(ui)
     ui:windowEnd()
 end
 
-return SideMenuWidget
+return SideMenuLayout

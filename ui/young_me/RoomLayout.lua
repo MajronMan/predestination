@@ -1,11 +1,11 @@
 local class = require("middleclass")
 
-local RoomWidget = class("ui.young_me.RoomWidget")
+local RoomLayout = class("ui.young_me.RoomLayout")
 
-function RoomWidget:frame(ui)
+function RoomLayout:frame(ui)
     if ui:windowBegin("Room", 200, 125, 1400, 700, "title") then
     end
     ui:windowEnd()
 end
 
-return RoomWidget
+return RoomLayout
