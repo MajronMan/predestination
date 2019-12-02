@@ -17,4 +17,12 @@ function MapController:load(ctx, data)
     return MapController(MapModel(layout, data.currentRoom))
 end
 
+function MapController:getCurrentRoom()
+    return self.model.layout[self.model.currentRoom]
+end
+
+function MapController:enterRoom(id)
+    self.model.currentRoom = id
+end
+
 return MapController

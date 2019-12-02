@@ -13,7 +13,7 @@ function YoungMeUi:initialize(data, ctx)
 
     self.font = love.graphics.newFont(self.data.fontSize)
     self.layouts = {
-        RoomLayout(),
+        RoomLayout(ctx.map),
         SideMenuLayout(),
         SpellbookLayout(ctx.spellbook),
         StatsLayout(ctx.player.model)
