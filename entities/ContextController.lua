@@ -14,13 +14,4 @@ function ContextController.static:load(data)
     return ctx
 end
 
-function ContextController:update(ui, state, dt)
-    self.player:update(state, dt)
-    self.spellbook:update(ui, state, dt)
-end
-
-function ContextController:draw()
-    self.player:draw()
-end
-
 return ContextController

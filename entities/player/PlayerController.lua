@@ -14,11 +14,4 @@ function PlayerController.static:load(ctx, data)
     return PlayerController(model)
 end
 
-function PlayerController:update(state, dt)
-    if self.model.hp == 0 then
-        love.window.showMessageBox("GAME OVER", "You died! Poor princess...", "info")
-        love.load()
-    end
-end
-
 return PlayerController

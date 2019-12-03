@@ -17,10 +17,4 @@ function SpellbookController.static:load(ctx, data)
     return SpellbookController(ctx, spells)
 end
 
-function SpellbookController:update(ui, state, dt)
-    for _, spell in pairs(self.spells) do
-        spell:update(ui, state, dt)
-    end
-end
-
 return SpellbookController

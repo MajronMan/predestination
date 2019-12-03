@@ -9,7 +9,11 @@ end
 function SpellbookLayout:frame(ui)
     if ui:windowBegin("Spellbook", 0, 110, 220, 970, "title") then
         ui:layoutRow("dynamic", 149, 1)
-        self.model:update(ui, nil, nil)
+        for _, spell in pairs(self.model.spells) do
+            if ui:button(spell.model.name) then
+                spell:cast(ctx.player.model)
+            end
+        end
     end
     ui:windowEnd()
 end
