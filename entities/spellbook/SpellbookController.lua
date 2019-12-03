@@ -16,4 +16,8 @@ function SpellbookController:initialize(spells)
     self.spells = spells
 end
 
+function SpellbookController:getSpells()
+    return self.spells
+end
+
 return SpellbookController

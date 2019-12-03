@@ -18,7 +18,7 @@ function YoungMeUi:initialize(ctx, data)
         RoomLayout(ctx.map),
         SideMenuLayout(),
         SpellbookLayout(ctx.spellbook),
-        StatsLayout(ctx.player.model)
+        StatsLayout(ctx.player)
     }
 end
 

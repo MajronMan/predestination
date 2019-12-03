@@ -8,9 +8,9 @@ end
 
 function StatsLayout:frame(ui)
     if ui:windowBegin("Stats", 0, 0, 220, 110) then
-        self:statLabel(ui, "HP", self.model.hp, self.model.maxHp, "#ff4444")
-        self:statLabel(ui, "MP", self.model.mp, self.model.maxMp, "#4444ff")
-        self:statLabel(ui, "IP", self.model.ip, self.model.maxIp, "#ff44ff")
+        self:statLabel(ui, "HP", self.model:getHp(), self.model:getMaxHp(), "#ff4444")
+        self:statLabel(ui, "MP", self.model:getMp(), self.model:getMaxMp(), "#4444ff")
+        self:statLabel(ui, "IP", self.model:getIp(), self.model:getMaxIp(), "#ff44ff")
     end
     ui:windowEnd()
 end

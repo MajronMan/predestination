@@ -16,4 +16,16 @@ function RoomController:initialize(model)
     self.model = model
 end
 
+function RoomController:getId()
+    return self.model.id
+end
+
+function RoomController:getExits()
+    return self.model.exits
+end
+
+function RoomController:getEvent()
+    return self.model.event
+end
+
 return RoomController

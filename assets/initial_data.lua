@@ -78,37 +78,37 @@ data.spellbook = {
     {
         name = "HP +10",
         effect = function(target)
-            target.hp = target.hp + 10
+            target:setHp(target:getHp() + 10)
         end
     },
     {
         name = "HP -10",
         effect = function(target)
-            target.hp = target.hp - 10
+            target:setHp(target:getHp() - 10)
         end
     },
     {
         name = "MP +10",
         effect = function(target)
-            target.mp = target.mp + 10
+            target:setMp(target:getMp() + 10)
         end
     },
     {
         name = "MP -10",
         effect = function(target)
-            target.mp = target.mp - 10
+            target:setMp(target:getMp() - 10)
         end
     },
     {
         name = "IP +10",
         effect = function(target)
-            target.ip = target.ip + 10
+            target:setIp(target:getIp() + 10)
         end
     },
     {
         name = "IP -10",
         effect = function(target)
-            target.ip = target.ip - 10
+            target:setIp(target:getIp() - 10)
         end
     }
 }

@@ -16,9 +16,13 @@ function HpEvent:initialize(ctx, hpDelta, title, text)
 end
 
 function HpEvent:trigger()
-    local target = self.ctx.player.model
-    target.hp = lume.clamp(target.hp + self.hpDelta, 0, target.maxHp)
+    local target = self.ctx.player
+    target:setHp(target:getHp() + self.hpDelta)
     self.triggered = true
+end
+
+function HpEvent:isTriggered()
+    return self.triggered
 end
 
 return HpEvent

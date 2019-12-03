@@ -8,11 +8,11 @@ end
 
 function RoomLayout:frame(ui)
     local room = self.model:getCurrentRoom()
-    local windowTitle = "Room: " .. room.model.id
+    local windowTitle = "Room: " .. room:getId()
     if ui:windowBegin(windowTitle, 220, 0, 1480, 800, "title") then
-        self:frameExits(ui, room.model.exits)
-        local event = room.model.event
-        if event and not event.triggered then
+        self:frameExits(ui, room:getExits())
+        local event = room:getEvent()
+        if event and not event:isTriggered() then
             self:frameEvent(ui, event)
         end
     end

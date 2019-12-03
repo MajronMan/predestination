@@ -16,4 +16,8 @@ function SpellController:cast(target)
     self.model.effect(target)
 end
 
+function SpellController:getName()
+    return self.model.name
+end
+
 return SpellController
