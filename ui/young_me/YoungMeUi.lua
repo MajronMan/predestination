@@ -1,5 +1,6 @@
 local class = require("middleclass")
 
+local DialogueLayout = require("ui.young_me.DialogueLayout")
 local RoomLayout = require("ui.young_me.RoomLayout")
 local SideMenuLayout = require("ui.young_me.SideMenuLayout")
 local SpellbookLayout = require("ui.young_me.SpellbookLayout")
@@ -13,6 +14,7 @@ function YoungMeUi:initialize(data, ctx)
 
     self.font = love.graphics.newFont(self.data.fontSize)
     self.layouts = {
+        DialogueLayout(),
         RoomLayout(ctx.map),
         SideMenuLayout(),
         SpellbookLayout(ctx.spellbook),
