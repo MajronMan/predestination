@@ -9,11 +9,8 @@ local StatsLayout = require("ui.young_me.StatsLayout")
 local YoungMeUi = class("ui.young_me.YoungMeUi")
 
 function YoungMeUi:initialize(ctx, data)
-    self.ctx = ctx
-    self.data = data
-
-    self.font = love.graphics.newFont(self.data.fontSize)
-    self.layouts = {
+    self._font = love.graphics.newFont(data.fontSize)
+    self._layouts = {
         DialogueLayout(),
         RoomLayout(ctx.map),
         SideMenuLayout(),
@@ -23,9 +20,9 @@ function YoungMeUi:initialize(ctx, data)
 end
 
 function YoungMeUi:frame(ui)
-    ui:styleSetFont(self.font)
+    ui:styleSetFont(self._font)
 
-    for _, layout in pairs(self.layouts) do
+    for _, layout in pairs(self._layouts) do
         layout:frame(ui)
     end
 end

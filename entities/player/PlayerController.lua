@@ -12,55 +12,55 @@ function PlayerController.static:load(ctx, data)
 end
 
 function PlayerController:initialize(model)
-    self.model = model
+    self._model = model
 end
 
 function PlayerController:getHp()
-    return self.model.hp
+    return self._model.hp
 end
 
 function PlayerController:setHp(value, noClamp)
     if noClamp then
-        self.model.hp = value
+        self._model.hp = value
     else
-        self.model.hp = lume.clamp(value, 0, self.model.maxHp)
+        self._model.hp = lume.clamp(value, 0, self._model.maxHp)
     end
 end
 
 function PlayerController:getMp()
-    return self.model.mp
+    return self._model.mp
 end
 
 function PlayerController:setMp(value, noClamp)
     if noClamp then
-        self.model.mp = value
+        self._model.mp = value
     else
-        self.model.mp = lume.clamp(value, 0, self.model.maxMp)
+        self._model.mp = lume.clamp(value, 0, self._model.maxMp)
     end
 end
 
 function PlayerController:getIp()
-    return self.model.ip
+    return self._model.ip
 end
 
 function PlayerController:setIp(value, noClamp)
     if noClamp then
-        self.model.ip = value
+        self._model.ip = value
     else
-        self.model.ip = lume.clamp(value, 0, self.model.maxIp)
+        self._model.ip = lume.clamp(value, 0, self._model.maxIp)
     end
 end
 
 function PlayerController:getMaxHp()
-    return self.model.maxHp
+    return self._model.maxHp
 end
 
 function PlayerController:getMaxMp()
-    return self.model.maxMp
+    return self._model.maxMp
 end
 
 function PlayerController:getMaxIp()
-    return self.model.maxIp
+    return self._model.maxIp
 end
 
 return PlayerController

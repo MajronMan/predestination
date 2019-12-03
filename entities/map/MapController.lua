@@ -14,15 +14,15 @@ function MapController.static:load(ctx, data)
 end
 
 function MapController:initialize(model)
-    self.model = model
+    self._model = model
 end
 
 function MapController:getCurrentRoom()
-    return self.model.layout[self.model.currentRoomId]
+    return self._model.layout[self._model.currentRoomId]
 end
 
 function MapController:enterRoom(roomId)
-    self.model.currentRoomId = roomId
+    self._model.currentRoomId = roomId
 end
 
 return MapController

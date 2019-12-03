@@ -13,11 +13,11 @@ function SpellbookController.static:load(ctx, data)
 end
 
 function SpellbookController:initialize(spells)
-    self.spells = spells
+    self._spells = spells
 end
 
 function SpellbookController:getSpells()
-    return self.spells
+    return self._spells
 end
 
 return SpellbookController

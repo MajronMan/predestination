@@ -13,19 +13,19 @@ function RoomController.static:load(ctx, data, i)
 end
 
 function RoomController:initialize(model)
-    self.model = model
+    self._model = model
 end
 
 function RoomController:getId()
-    return self.model.id
+    return self._model.id
 end
 
 function RoomController:getExits()
-    return self.model.exits
+    return self._model.exits
 end
 
 function RoomController:getEvent()
-    return self.model.event
+    return self._model.event
 end
 
 return RoomController

@@ -8,21 +8,21 @@ function HpEvent.static:load(ctx, data)
 end
 
 function HpEvent:initialize(ctx, hpDelta, title, text)
-    self.ctx = ctx
-    self.hpDelta = hpDelta
-    self.title = title
-    self.text = text
-    self.triggered = false
+    self._ctx = ctx
+    self._hpDelta = hpDelta
+    self._title = title
+    self._text = text
+    self._triggered = false
 end
 
 function HpEvent:trigger()
-    local target = self.ctx.player
-    target:setHp(target:getHp() + self.hpDelta)
-    self.triggered = true
+    local target = self._ctx.player
+    target:setHp(target:getHp() + self._hpDelta)
+    self._triggered = true
 end
 
 function HpEvent:isTriggered()
-    return self.triggered
+    return self._triggered
 end
 
 return HpEvent

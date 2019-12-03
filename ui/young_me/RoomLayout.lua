@@ -3,11 +3,11 @@ local class = require("middleclass")
 local RoomLayout = class("ui.young_me.RoomLayout")
 
 function RoomLayout:initialize(model)
-    self.model = model
+    self._model = model
 end
 
 function RoomLayout:frame(ui)
-    local room = self.model:getCurrentRoom()
+    local room = self._model:getCurrentRoom()
     local windowTitle = "Room: " .. room:getId()
     if ui:windowBegin(windowTitle, 220, 0, 1480, 800, "title") then
         self:frameExits(ui, room:getExits())
@@ -23,7 +23,7 @@ function RoomLayout:frameExits(ui, exits)
     ui:layoutRow("dynamic", 735, 2)
     for _, exit in ipairs(exits) do
         if ui:button(exit) then
-            self.model:enterRoom(exit)
+            self._model:enterRoom(exit)
         end
     end
 end

@@ -9,15 +9,15 @@ function SpellController.static:load(ctx, data)
 end
 
 function SpellController:initialize(model)
-    self.model = model
+    self._model = model
 end
 
 function SpellController:cast(target)
-    self.model.effect(target)
+    self._model.effect(target)
 end
 
 function SpellController:getName()
-    return self.model.name
+    return self._model.name
 end
 
 return SpellController
