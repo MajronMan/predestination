@@ -8,8 +8,8 @@ end
 
 function RoomLayout:frame(ui)
     local room = self.model:getCurrentRoom()
-    if ui:windowBegin("Room", 200, 125, 1400, 700, "title") then
-        ui:layoutTemplateBegin(640)
+    if ui:windowBegin("Room", 220, 0, 1480, 800, "title") then
+        ui:layoutTemplateBegin(735)
         ui:layoutTemplatePush("dynamic")
         ui:layoutTemplatePush("dynamic")
         ui:layoutTemplateEnd()
