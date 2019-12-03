@@ -25,4 +25,12 @@ function HpEvent:isTriggered()
     return self._triggered
 end
 
+function HpEvent:getTitle()
+    return self._title
+end
+
+function HpEvent:getText()
+    return self._text
+end
+
 return HpEvent

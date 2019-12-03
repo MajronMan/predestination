@@ -29,9 +29,9 @@ function RoomLayout:frameExits(ui, exits)
 end
 
 function RoomLayout:frameEvent(ui, event)
-    if ui:popupBegin("static", event.title, 500, 200, 400, 300, "title") then
+    if ui:popupBegin("static", event:getTitle(), 500, 200, 400, 300, "title") then
         ui:layoutRow("dynamic", 130, 1)
-        ui:label(event.text, "wrap")
+        ui:label(event:getText(), "wrap")
         ui:layoutRow("dynamic", 100, 1)
         if ui:button("OK") then
             event:trigger()
