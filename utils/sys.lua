@@ -8,12 +8,7 @@ local sysMap = {
 
 sys.dep = function(osOpts)
     local os = sysMap[love.system.getOS()]
-
-    if type(osOpts[os]) == "function" then
-        return osOpts[os]()
-    else
-        return osOpts[os]
-    end
+    return osOpts[os]
 end
 
 sys.libExt = sys.dep({windows = ".dll", mac = ".dylib", linux = ".so"})

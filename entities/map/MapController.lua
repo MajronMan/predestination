@@ -5,24 +5,24 @@ local RoomController = require("entities.room.RoomController")
 
 local MapController = class("entities.MapController")
 
-function MapController:initialize(model)
-    self.model = model
-end
-
-function MapController:load(ctx, data)
+function MapController.static:load(ctx, data)
     local layout = {}
     for i, room in ipairs(data.layout) do
         table.insert(layout, i, RoomController:load(ctx, room, i))
     end
-    return MapController(MapModel(layout, data.currentRoom))
+    return MapController(MapModel(layout, data.currentRoomId))
+end
+
+function MapController:initialize(model)
+    self.model = model
 end
 
 function MapController:getCurrentRoom()
-    return self.model.layout[self.model.currentRoom]
+    return self.model.layout[self.model.currentRoomId]
 end
 
-function MapController:enterRoom(id)
-    self.model.currentRoom = id
+function MapController:enterRoom(roomId)
+    self.model.currentRoomId = roomId
 end
 
 return MapController

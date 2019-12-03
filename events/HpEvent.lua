@@ -1,6 +1,11 @@
 local class = require("middleclass")
+local lume = require("lume")
 
-local HpEvent = class("entities.event.HpEvent")
+local HpEvent = class("events.HpEvent")
+
+function HpEvent.static:load(ctx, data)
+    return HpEvent(ctx, data.hpDelta, data.title, data.text)
+end
 
 function HpEvent:initialize(ctx, hpDelta, title, text)
     self.ctx = ctx
@@ -10,13 +15,9 @@ function HpEvent:initialize(ctx, hpDelta, title, text)
     self.triggered = false
 end
 
-function HpEvent:load(ctx, data)
-    return HpEvent(ctx, data.hpDelta, data.title, data.text)
-end
-
 function HpEvent:trigger()
     local target = self.ctx.player.model
-    target.hp = math.max(0, math.min(target.hp + self.hpDelta, target.maxHp))
+    target.hp = lume.clamp(target.hp + self.hpDelta, 0, target.maxHp)
     self.triggered = true
 end
 

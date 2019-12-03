@@ -8,31 +8,37 @@ end
 
 function RoomLayout:frame(ui)
     local room = self.model:getCurrentRoom()
-    if ui:windowBegin("Room: " .. room.model.id, 220, 0, 1480, 800, "title") then
-        ui:layoutTemplateBegin(735)
-        ui:layoutTemplatePush("dynamic")
-        ui:layoutTemplatePush("dynamic")
-        ui:layoutTemplateEnd()
-        for _, exit in ipairs(room.model.exits) do
-            if ui:button(exit) then
-                self.model:enterRoom(exit)
-            end
-        end
+    local windowTitle = "Room: " .. room.model.id
+    if ui:windowBegin(windowTitle, 220, 0, 1480, 800, "title") then
+        self:frameExits(ui, room.model.exits)
         local event = room.model.event
-        if event ~= nil and not event.triggered then
-            if ui:popupBegin("static", event.title, 500, 200, 400, 300, "title") then
-                ui:layoutRow("dynamic", 130, 1)
-                ui:label(event.text, "wrap")
-                ui:layoutRow("dynamic", 100, 1)
-                if ui:button("OK") then
-                    event:trigger()
-                    ui:popupClose()
-                end
-                ui:popupEnd()
-            end
+        if event and not event.triggered then
+            self:frameEvent(ui, event)
         end
     end
     ui:windowEnd()
+end
+
+function RoomLayout:frameExits(ui, exits)
+    ui:layoutRow("dynamic", 735, 2)
+    for _, exit in ipairs(exits) do
+        if ui:button(exit) then
+            self.model:enterRoom(exit)
+        end
+    end
+end
+
+function RoomLayout:frameEvent(ui, event)
+    if ui:popupBegin("static", event.title, 500, 200, 400, 300, "title") then
+        ui:layoutRow("dynamic", 130, 1)
+        ui:label(event.text, "wrap")
+        ui:layoutRow("dynamic", 100, 1)
+        if ui:button("OK") then
+            event:trigger()
+            ui:popupClose()
+        end
+        ui:popupEnd()
+    end
 end
 
 return RoomLayout

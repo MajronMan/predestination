@@ -4,12 +4,12 @@ local nuklear = require("nuklear")
 local YoungMeUi = require("ui.young_me.YoungMeUi")
 
 local ContextController = require("entities.ContextController")
-local data = require("assets.initialData")
+local data = require("assets.initial_data")
 
 function love.load()
     ctx = ContextController:load(data)
     ui = nuklear.newUI()
-    ymUi = YoungMeUi(data, ctx)
+    ymUi = YoungMeUi(ctx, data)
 end
 
 function love.update(dt)

@@ -4,12 +4,12 @@ local SpellModel = require("entities.spell.SpellModel")
 
 local SpellController = class("entites.spell.SpellController")
 
-function SpellController:initialize(model)
-    self.model = model
+function SpellController.static:load(ctx, data)
+    return SpellController(SpellModel(data.name, data.effect))
 end
 
-function SpellController:load(ctx, data)
-    return SpellController(SpellModel(data.name, data.effect))
+function SpellController:initialize(model)
+    self.model = model
 end
 
 function SpellController:cast(target)

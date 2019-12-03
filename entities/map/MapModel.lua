@@ -2,9 +2,9 @@ local class = require("middleclass")
 
 local MapModel = class("entities.map.MapModel")
 
-function MapModel:initialize(layout, currentRoom)
+function MapModel:initialize(layout, currentRoomId)
     self.layout = layout
-    self.currentRoom = currentRoom
+    self.currentRoomId = currentRoomId
 end
 
 return MapModel
