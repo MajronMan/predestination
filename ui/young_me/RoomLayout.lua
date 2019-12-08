@@ -4,13 +4,13 @@ local Layout = require("ui.Layout")
 
 local RoomLayout = class("ui.young_me.RoomLayout", Layout)
 
-function RoomLayout:initialize(bounds, model)
+function RoomLayout:initialize(bounds, map)
     Layout.initialize(self, bounds)
-    self._model = model
+    self._map = map
 end
 
 function RoomLayout:body(ui)
-    local room = self._model:getCurrentRoom()
+    local room = self._map:getCurrentRoom()
     local title = "Room: " .. room:getId()
     if ui:groupBegin(title, "title") then
         self:exits(ui, room:getExits())
@@ -26,7 +26,7 @@ function RoomLayout:exits(ui, exits)
     ui:layoutRow("dynamic", 700, 2)
     for _, exit in ipairs(exits) do
         if ui:button(exit) then
-            self._model:enterRoom(exit)
+            self._map:enterRoom(exit)
         end
     end
 end

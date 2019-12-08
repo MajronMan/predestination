@@ -14,7 +14,7 @@ function YoungMeUi:initialize(ctx, data)
         DialogueLayout({0.15, 0.7, 0.7, 0.3}),
         RoomLayout({0.15, 0, 0.7, 0.7}, ctx.map),
         SideMenuLayout({0.85, 0, 0.15, 1}),
-        SpellbookLayout({0, 0.1, 0.15, 0.9}, ctx.spellbook),
+        SpellbookLayout({0, 0.1, 0.15, 0.9}, ctx.spellbook, ctx.player),
         StatsLayout({0, 0, 0.15, 0.1}, ctx.player)
     }
 end

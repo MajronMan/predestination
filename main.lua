@@ -6,6 +6,10 @@ local YoungMeUi = require("ui.young_me.YoungMeUi")
 local ContextController = require("entities.ContextController")
 local data = require("assets.initial_data")
 
+local ctx
+local ui
+local ymUi
+
 function love.load()
     ctx = ContextController:load(data)
     ui = nuklear.newUI()

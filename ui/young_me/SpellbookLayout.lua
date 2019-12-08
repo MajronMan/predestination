@@ -4,17 +4,18 @@ local Layout = require("ui.Layout")
 
 local SpellbookLayout = class("ui.young_me.SpellbookLayout", Layout)
 
-function SpellbookLayout:initialize(bounds, model)
+function SpellbookLayout:initialize(bounds, spellbook, spellTarget)
     Layout.initialize(self, bounds)
-    self._model = model
+    self._spellbook = spellbook
+    self._spellTarget = spellTarget
 end
 
 function SpellbookLayout:body(ui)
     if ui:groupBegin("Spellbook", "title") then
         ui:layoutRow("dynamic", 149, 1)
-        for _, spell in ipairs(self._model:getSpells()) do
+        for _, spell in ipairs(self._spellbook:getSpells()) do
             if ui:button(spell:getName()) then
-                spell:cast(ctx.player)
+                spell:cast(self._spellTarget)
             end
         end
         ui:groupEnd()
