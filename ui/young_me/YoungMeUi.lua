@@ -21,10 +21,14 @@ end
 
 function YoungMeUi:frame(ui)
     ui:styleSetFont(self._font)
-
-    for _, layout in pairs(self._layouts) do
-        layout:frame(ui)
+    local w, h = love.graphics.getDimensions()
+    if ui:windowBegin("YoungMeUi", 0, 0, w, h) then
+        ui:layoutSpaceBegin("dynamic", h, #self._layouts)
+        for _, layout in pairs(self._layouts) do
+            layout:frame(ui)
+        end
     end
+    ui:windowEnd()
 end
 
 return YoungMeUi

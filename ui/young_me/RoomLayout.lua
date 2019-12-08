@@ -8,19 +8,20 @@ end
 
 function RoomLayout:frame(ui)
     local room = self._model:getCurrentRoom()
-    local windowTitle = "Room: " .. room:getId()
-    if ui:windowBegin(windowTitle, 220, 0, 1480, 800, "title") then
+    local title = "Room: " .. room:getId()
+    ui:layoutSpacePush(0.15, 0, 0.7, 0.7)
+    if ui:groupBegin(title, "title") then
         self:frameExits(ui, room:getExits())
         local event = room:getEvent()
         if event and not event:isTriggered() then
             self:frameEvent(ui, event)
         end
+        ui:groupEnd()
     end
-    ui:windowEnd()
 end
 
 function RoomLayout:frameExits(ui, exits)
-    ui:layoutRow("dynamic", 735, 2)
+    ui:layoutRow("dynamic", 700, 2)
     for _, exit in ipairs(exits) do
         if ui:button(exit) then
             self._model:enterRoom(exit)

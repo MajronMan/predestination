@@ -7,15 +7,16 @@ function SpellbookLayout:initialize(model)
 end
 
 function SpellbookLayout:frame(ui)
-    if ui:windowBegin("Spellbook", 0, 110, 220, 970, "title") then
+    ui:layoutSpacePush(0, 0.1, 0.15, 0.9)
+    if ui:groupBegin("Spellbook", "title") then
         ui:layoutRow("dynamic", 149, 1)
         for _, spell in pairs(self._model:getSpells()) do
             if ui:button(spell:getName()) then
                 spell:cast(ctx.player)
             end
         end
+        ui:groupEnd()
     end
-    ui:windowEnd()
 end
 
 return SpellbookLayout
