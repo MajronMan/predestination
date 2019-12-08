@@ -2,12 +2,13 @@ local class = require("middleclass")
 
 local SpellbookLayout = class("ui.young_me.SpellbookLayout")
 
-function SpellbookLayout:initialize(model)
+function SpellbookLayout:initialize(bounds, model)
+    self._bounds = bounds
     self._model = model
 end
 
 function SpellbookLayout:frame(ui)
-    ui:layoutSpacePush(0, 0.1, 0.15, 0.9)
+    ui:layoutSpacePush(unpack(self._bounds))
     if ui:groupBegin("Spellbook", "title") then
         ui:layoutRow("dynamic", 149, 1)
         for _, spell in pairs(self._model:getSpells()) do

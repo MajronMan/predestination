@@ -2,12 +2,13 @@ local class = require("middleclass")
 
 local StatsLayout = class("ui.young_me.StatsLayout")
 
-function StatsLayout:initialize(model)
+function StatsLayout:initialize(bounds, model)
+    self._bounds = bounds
     self._model = model
 end
 
 function StatsLayout:frame(ui)
-    ui:layoutSpacePush(0, 0, 0.15, 0.1)
+    ui:layoutSpacePush(unpack(self._bounds))
     if ui:groupBegin("Stats") then
         self:statLabel(ui, "HP", self._model:getHp(), self._model:getMaxHp(), "#ff4444")
         self:statLabel(ui, "MP", self._model:getMp(), self._model:getMaxMp(), "#4444ff")

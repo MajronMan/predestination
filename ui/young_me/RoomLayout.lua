@@ -2,14 +2,15 @@ local class = require("middleclass")
 
 local RoomLayout = class("ui.young_me.RoomLayout")
 
-function RoomLayout:initialize(model)
+function RoomLayout:initialize(bounds, model)
+    self._bounds = bounds
     self._model = model
 end
 
 function RoomLayout:frame(ui)
     local room = self._model:getCurrentRoom()
     local title = "Room: " .. room:getId()
-    ui:layoutSpacePush(0.15, 0, 0.7, 0.7)
+    ui:layoutSpacePush(unpack(self._bounds))
     if ui:groupBegin(title, "title") then
         self:frameExits(ui, room:getExits())
         local event = room:getEvent()
