@@ -1,27 +1,28 @@
 local class = require("middleclass")
 
-local RoomLayout = class("ui.young_me.RoomLayout")
+local Layout = require("ui.Layout")
+
+local RoomLayout = class("ui.young_me.RoomLayout", Layout)
 
 function RoomLayout:initialize(bounds, model)
-    self._bounds = bounds
+    Layout.initialize(self, bounds)
     self._model = model
 end
 
-function RoomLayout:frame(ui)
+function RoomLayout:body(ui)
     local room = self._model:getCurrentRoom()
     local title = "Room: " .. room:getId()
-    ui:layoutSpacePush(unpack(self._bounds))
     if ui:groupBegin(title, "title") then
-        self:frameExits(ui, room:getExits())
+        self:exits(ui, room:getExits())
         local event = room:getEvent()
         if event and not event:isTriggered() then
-            self:frameEvent(ui, event)
+            self:event(ui, event)
         end
         ui:groupEnd()
     end
 end
 
-function RoomLayout:frameExits(ui, exits)
+function RoomLayout:exits(ui, exits)
     ui:layoutRow("dynamic", 700, 2)
     for _, exit in ipairs(exits) do
         if ui:button(exit) then
@@ -30,7 +31,7 @@ function RoomLayout:frameExits(ui, exits)
     end
 end
 
-function RoomLayout:frameEvent(ui, event)
+function RoomLayout:event(ui, event)
     if ui:popupBegin("static", event:getTitle(), 500, 200, 400, 300, "title") then
         ui:layoutRow("dynamic", 130, 1)
         ui:label(event:getText(), "wrap")

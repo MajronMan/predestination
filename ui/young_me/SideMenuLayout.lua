@@ -1,13 +1,14 @@
 local class = require("middleclass")
 
-local SideMenuLayout = class("ui.young_me.SideMenuLayout")
+local Layout = require("ui.Layout")
+
+local SideMenuLayout = class("ui.young_me.SideMenuLayout", Layout)
 
 function SideMenuLayout:initialize(bounds)
-    self._bounds = bounds
+    Layout.initialize(self, bounds)
 end
 
-function SideMenuLayout:frame(ui)
-    ui:layoutSpacePush(unpack(self._bounds))
+function SideMenuLayout:body(ui)
     if ui:groupBegin("SideMenu") then
         ui:layoutRow("dynamic", 175, 1)
         ui:button("Minimap")

@@ -1,14 +1,15 @@
 local class = require("middleclass")
 
-local StatsLayout = class("ui.young_me.StatsLayout")
+local Layout = require("ui.Layout")
+
+local StatsLayout = class("ui.young_me.StatsLayout", Layout)
 
 function StatsLayout:initialize(bounds, model)
-    self._bounds = bounds
+    Layout.initialize(self, bounds)
     self._model = model
 end
 
-function StatsLayout:frame(ui)
-    ui:layoutSpacePush(unpack(self._bounds))
+function StatsLayout:body(ui)
     if ui:groupBegin("Stats") then
         self:statLabel(ui, "HP", self._model:getHp(), self._model:getMaxHp(), "#ff4444")
         self:statLabel(ui, "MP", self._model:getMp(), self._model:getMaxMp(), "#4444ff")
