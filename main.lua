@@ -1,23 +1,27 @@
 require("custom_conf")
 
 local nuklear = require("nuklear")
-local YoungMeUi = require("ui.young_me.YoungMeUi")
+local YoungMeWindow = require("ui.young_me.YoungMeWindow")
 
 local ContextController = require("entities.ContextController")
 local data = require("assets.initial_data")
 
 local ctx
+local font
 local ui
 local ymUi
 
 function love.load()
     ctx = ContextController:load(data)
+    font = love.graphics.newFont(data.fontSize)
     ui = nuklear.newUI()
-    ymUi = YoungMeUi(ctx, data)
+    local w, h = love.graphics.getDimensions()
+    ymUi = YoungMeWindow(0, 0, w, h, ctx)
 end
 
 function love.update(dt)
     ui:frameBegin()
+    ui:styleSetFont(font)
     ymUi:frame(ui)
     ui:frameEnd()
 end
