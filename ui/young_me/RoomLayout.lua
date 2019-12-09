@@ -4,8 +4,8 @@ local Layout = require("ui.Layout")
 
 local RoomLayout = class("ui.young_me.RoomLayout", Layout)
 
-function RoomLayout:initialize(bounds, map)
-    Layout.initialize(self, bounds)
+function RoomLayout:initialize(window, rBounds, map)
+    Layout.initialize(self, window, rBounds)
     self._map = map
 end
 

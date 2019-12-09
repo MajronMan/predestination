@@ -4,8 +4,8 @@ local Layout = require("ui.Layout")
 
 local SideMenuLayout = class("ui.young_me.SideMenuLayout", Layout)
 
-function SideMenuLayout:initialize(bounds)
-    Layout.initialize(self, bounds)
+function SideMenuLayout:initialize(window, rBounds)
+    Layout.initialize(self, window, rBounds)
 end
 
 function SideMenuLayout:body(ui)

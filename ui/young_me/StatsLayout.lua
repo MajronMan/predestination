@@ -4,8 +4,8 @@ local Layout = require("ui.Layout")
 
 local StatsLayout = class("ui.young_me.StatsLayout", Layout)
 
-function StatsLayout:initialize(bounds, model)
-    Layout.initialize(self, bounds)
+function StatsLayout:initialize(window, rBounds, model)
+    Layout.initialize(self, window, rBounds)
     self._model = model
 end
 

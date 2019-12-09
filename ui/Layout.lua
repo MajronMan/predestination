@@ -2,8 +2,9 @@ local class = require("middleclass")
 
 local Layout = class("ui.Layout")
 
-function Layout:initialize(bounds)
-    self._bounds = bounds
+function Layout:initialize(window, rBounds)
+    self._window = window
+    self._rBounds = rBounds
 end
 
 function Layout:frame(ui)
@@ -12,7 +13,7 @@ function Layout:frame(ui)
 end
 
 function Layout:head(ui)
-    ui:layoutSpacePush(unpack(self._bounds))
+    ui:layoutSpacePush(unpack(self._rBounds))
 end
 
 function Layout:body(ui)

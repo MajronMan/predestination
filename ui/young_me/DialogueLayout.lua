@@ -4,8 +4,8 @@ local Layout = require("ui.Layout")
 
 local DialogueLayout = class("ui.young_me.DialogueLayout", Layout)
 
-function DialogueLayout:initialize(bounds)
-    Layout.initialize(self, bounds)
+function DialogueLayout:initialize(window, rBounds)
+    Layout.initialize(self, window, rBounds)
 end
 
 function DialogueLayout:body(ui)

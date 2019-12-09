@@ -4,8 +4,8 @@ local Layout = require("ui.Layout")
 
 local SpellbookLayout = class("ui.young_me.SpellbookLayout", Layout)
 
-function SpellbookLayout:initialize(bounds, spellbook, spellTarget)
-    Layout.initialize(self, bounds)
+function SpellbookLayout:initialize(window, rBounds, spellbook, spellTarget)
+    Layout.initialize(self, window, rBounds)
     self._spellbook = spellbook
     self._spellTarget = spellTarget
 end
