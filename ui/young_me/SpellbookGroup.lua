@@ -4,8 +4,8 @@ local Group = require("ui.Group")
 
 local SpellbookGroup = class("ui.young_me.SpellbookGroup", Group)
 
-function SpellbookGroup:initialize(window, rBounds, spellbook, spellTarget)
-    Group.initialize(self, window, "Spellbook", rBounds, {"title"})
+function SpellbookGroup:initialize(window, title, rBounds, spellbook, spellTarget)
+    Group.initialize(self, window, title, rBounds, {"title"})
     self._spellbook = spellbook
     self._spellTarget = spellTarget
 end

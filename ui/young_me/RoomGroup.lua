@@ -4,8 +4,8 @@ local Group = require("ui.Group")
 
 local RoomGroup = class("ui.young_me.RoomGroup", Group)
 
-function RoomGroup:initialize(window, rBounds, map)
-    Group.initialize(self, window, "Room", rBounds)
+function RoomGroup:initialize(window, title, rBounds, map)
+    Group.initialize(self, window, title, rBounds)
     self._map = map
 end
 

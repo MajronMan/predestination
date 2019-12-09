@@ -19,11 +19,11 @@ function YoungMeWindow:initialize(x, y, w, h, ctx)
         h,
         {},
         {
-            DialogueGroup(self, {0.15, 0.7, 0.7, 0.3}),
-            RoomGroup(self, {0.15, 0, 0.7, 0.7}, ctx.map),
-            SideMenuGroup(self, {0.85, 0, 0.15, 1}),
-            SpellbookGroup(self, {0, 0.1, 0.15, 0.9}, ctx.spellbook, ctx.player),
-            StatsGroup(self, {0, 0, 0.15, 0.1}, ctx.player)
+            DialogueGroup(self, "Dialogue", {0.15, 0.7, 0.7, 0.3}),
+            RoomGroup(self, "Room", {0.15, 0, 0.7, 0.7}, ctx.map),
+            SideMenuGroup(self, "SideMenu", {0.85, 0, 0.15, 1}),
+            SpellbookGroup(self, "Spellbook", {0, 0.1, 0.15, 0.9}, ctx.spellbook, ctx.player),
+            StatsGroup(self, "Stats", {0, 0, 0.15, 0.1}, ctx.player)
         }
     )
 end

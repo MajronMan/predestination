@@ -4,8 +4,8 @@ local Group = require("ui.Group")
 
 local StatsGroup = class("ui.young_me.StatsGroup", Group)
 
-function StatsGroup:initialize(window, rBounds, model)
-    Group.initialize(self, window, "Stats", rBounds)
+function StatsGroup:initialize(window, title, rBounds, model)
+    Group.initialize(self, window, title, rBounds)
     self._model = model
 end
 
